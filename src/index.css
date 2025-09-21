@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Maritime Insurance Design System - Deep Ocean Blues with Encrypted Overlays */
+
+@layer base {
+  :root {
+    /* Deep Ocean Theme */
+    --background: 217 33% 6%;
+    --foreground: 200 50% 95%;
+
+    --card: 217 33% 8%;
+    --card-foreground: 200 50% 95%;
+
+    --popover: 217 33% 8%;
+    --popover-foreground: 200 50% 95%;
+
+    /* Ocean Blues */
+    --primary: 200 95% 45%;
+    --primary-foreground: 217 33% 6%;
+
+    --secondary: 217 32% 15%;
+    --secondary-foreground: 200 50% 95%;
+
+    --muted: 217 32% 12%;
+    --muted-foreground: 200 20% 65%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 217 33% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32% 15%;
+    --input: 217 32% 15%;
+    --ring: 200 95% 45%;
+
+    /* Maritime Theme Colors */
+    --ocean-deep: 217 33% 6%;
+    --ocean-mid: 200 95% 25%;
+    --ocean-bright: 200 95% 45%;
+    --encrypted-green: 158 64% 52%;
+    --encrypted-dark: 158 64% 25%;
+    --premium-gold: 43 96% 56%;
+    --wave-blue: 200 80% 60%;
+    
+    /* Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(var(--ocean-deep)), hsl(var(--ocean-mid)));
+    --gradient-encrypted: linear-gradient(90deg, hsl(var(--encrypted-dark)), hsl(var(--encrypted-green)));
+    --gradient-premium: linear-gradient(135deg, hsl(var(--premium-gold)), hsl(var(--ocean-bright)));
+    --gradient-wave: linear-gradient(180deg, transparent, hsl(var(--wave-blue) / 0.3));
+    
+    /* Shadows */
+    --shadow-ocean: 0 25px 50px -12px hsl(var(--ocean-deep) / 0.8);
+    --shadow-encrypted: 0 0 30px hsl(var(--encrypted-green) / 0.3);
+    --shadow-premium: 0 10px 40px hsl(var(--premium-gold) / 0.2);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Animation keyframes for maritime effects */
+@keyframes wave-flow {
+  0% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(-25px) scaleY(1.1); }
+  100% { transform: translateX(0) scaleY(1); }
+}
+
+@keyframes ship-sail {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+@keyframes encrypted-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes route-trace {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-ocean);
+  }
+}
+
+@layer components {
+  .wave-animation {
+    animation: wave-flow 3s ease-in-out infinite;
+  }
+  
+  .ship-sailing {
+    animation: ship-sail 20s linear infinite;
+  }
+  
+  .encrypted-glow {
+    animation: encrypted-pulse 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px hsl(var(--encrypted-green)));
+  }
+  
+  .route-tracing {
+    animation: route-trace 3s ease-out forwards;
+    stroke-dasharray: 10;
+  }
+  
+  .maritime-card {
+    background: var(--gradient-ocean);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-ocean);
+    backdrop-filter: blur(10px);
+  }
+  
+  .encrypted-overlay {
+    background: var(--gradient-encrypted);
+    opacity: 0.1;
+  }
+  
+  .premium-glow {
+    box-shadow: var(--shadow-premium);
+  }
+}
